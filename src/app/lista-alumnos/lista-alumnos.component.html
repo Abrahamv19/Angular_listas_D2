@@ -1,0 +1,46 @@
+<!-- RESUMEN CONCEPTOS -->
+<!-- ngStyle: trabaja con las propiedades de estilo del elemento - ngClass: trabaja con las clases del elemento -->
+<!-- Las directivas permiten manipular elementos html -->
+<!-- Binding: Enlazamiento entre componente y su html -->
+<!-- Pipes: filtros de vista, pequeñas funciones separadas a un componente -->
+
+<p *ngFor="let alumno of alumnos">
+    {{alumno.nombre | uppercase}}
+    - {{alumno.curso | uppercase}}
+    - {{alumno.fechaIngreso | date: 'fullDate'}}
+</p>
+
+<h2>Quienes Somos?</h2>
+<div class="container" [ngClass]= "enabledListaAlumnos ? 'container-violet' : 'container-grey'"> <h2 class="font-config">HA</h2></div>
+<p [ngClass]= "enabledListaAlumnos ? 'container-violet' : 'container-grey'">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla accusamus tempora magnam voluptas, voluptatum debitis quod aliquid est soluta ea ipsa qui rerum animi dolor quas nam enim officia laudantium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere sunt architecto fuga dolore nostrum consequuntur laboriosam porro repudiandae facilis! Saepe rem quas at doloremque delectus quo nam fugiat quod vel. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque illum inventore sit quis, dignissimos ad enim maxime quos tenetur ab dicta rem nostrum sequi architecto impedit sed mollitia repudiandae consequuntur!</p>
+
+<div class='centrar-texto'appRoundedBlock>
+<p [style.font-size]="enabledListaAlumnos ? '60px' : '30px'">Matriculas abiertas!!!</p>
+</div>
+<br>
+<button (click)="enabledListaAlumnos = !enabledListaAlumnos">Abrir-Cerrar</button>
+<p *ngIf="enabledListaAlumnos; else noEstaAbierto">Abierto de 7am a 5pm </p>
+<ng-template #noEstaAbierto>
+    <p>Cerrado de 5pm a 7am</p>
+</ng-template>  
+
+<div [ngSwitch]="1">
+    <span *ngSwitchCase="1">Seleccionaste curso de Angular</span>
+    <span *ngSwitchCase="2">Seleccionaste curso de React</span>
+    <span *ngSwitchCase="3">Seleccionaste curso de Vue</span>
+    <span *ngSwitchCase="4">Seleccionaste curso de Python</span>
+    <span *ngSwitchDefault>No existe el curso que buscas</span>
+</div>
+
+
+<div>
+    <h3>A continuación ingresa tu email</h3>
+    <input [(ngModel)]="email" type="email"/>
+    Tu email de usuaario es: {{email}}
+    <br>
+    <br>
+    <button (click)="email = ''">Vaciar campo</button>
+</div>
+
+
+

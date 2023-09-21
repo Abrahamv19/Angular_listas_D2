@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lista_vasquez_d2';
+  title = '* HACKER ACADEMY *';
+  enabled = false;
+
+  // metodo de ts
+  changeTitleBackgroudColor(): object {
+    return {
+      backgroundColor: this.enabled === true ? 'grey' : 'cyan',
+    }
+  }
 }
